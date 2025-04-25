@@ -3,15 +3,33 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'Reusable_card.dart';
+import 'card_Content.dart';
+
+
+const inactiveCardColor=Color(0xFF111328);
 const activeCardColor=Color(0xFF1D1E33);
 const bottomContainerHeight=80.0;
+
+const cardTextStyle= TextStyle(
+        fontSize:15,);
+
+
+enum GenderType{
+  male,female
+}
+
 
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
 
+
 class _InputPageState extends State<InputPage> {
+
+  late GenderType selectedGender;
+
   @override
   Widget build(BuildContext context) {
 
@@ -22,56 +40,59 @@ class _InputPageState extends State<InputPage> {
       body: Column(
         children: [
           Row(
+
             children: [
               Expanded(
-                child: ReusableCard(
-                  colour:activeCardColor,
+                child: GestureDetector(
+                  onTap: (){
+                    setState(() {
+                      selectedGender=GenderType.male;
+                    });
 
-                  cardChild: Column(
-                    children: [
-                      Icon(FontAwesomeIcons.mars),
-                      
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Text('Male')
-                    ],
+                  },
+                  child: ReusableCard(
+                    colour:selectedGender==GenderType.male?activeCardColor:inactiveCardColor,
+                    cardChild: CardContent(
+                      cardText:Text('Male',
+                      style:cardTextStyle),
+
+                      CardIcon: FontAwesomeIcons.mars ,
+                    ),
+
+
                   ),
                 ),
                 
 
               ),
               Expanded(
-                child: ReusableCard(
-                    colour: activeCardColor,
-                  cardChild: Column(
-                    children: [
-                      Icon(FontAwesomeIcons.mars),
+                child: GestureDetector(
+                  onTap: (){
+                    setState(() {
+                      selectedGender==GenderType.female;
+                    });
+                  },
 
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Text('Male')
-                    ],
+                  child: ReusableCard(
+                      colour:selectedGender==GenderType.female?activeCardColor:inactiveCardColor,
+                      cardChild: CardContent(
+                        cardText:Text('Female',style: cardTextStyle,),
+                        CardIcon: FontAwesomeIcons.venus ,),
+
+
                   ),
-
                 ),
               ),
             ],
 
           ),
           Expanded(
+
             child: ReusableCard(
                 colour: activeCardColor,
-              cardChild: Column(
-                children: [
-                  Icon(FontAwesomeIcons.mars),
-
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Text('Male')
-                ],
+              cardChild: CardContent(
+                cardText:Text('????',style: cardTextStyle,),
+                CardIcon: FontAwesomeIcons.mars ,
               ),),
           ),
           Row(
@@ -79,30 +100,21 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: ReusableCard(
                     colour: activeCardColor,
-                  cardChild: Column(
-                    children: [
-                      Icon(FontAwesomeIcons.mars),
-
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Text('Male')
-                    ],
-                  ),),
+                  cardChild: CardContent(
+                    cardText:Text('Weight',style: cardTextStyle,),
+                    CardIcon: FontAwesomeIcons.mars ,
+                  ),
+                 ),
               ),
               Expanded(
                 child: ReusableCard(
                     colour: activeCardColor,
-                  cardChild: Column(
-                    children: [
-                      Icon(FontAwesomeIcons.mars),
-
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Text('Male')
-                    ],
+                  cardChild: CardContent(
+                    cardText:Text('Height',
+                    style: cardTextStyle),
+                    CardIcon: FontAwesomeIcons.mars ,
                   ),
+
 
                 ),
               ),
@@ -134,20 +146,5 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class ReusableCard extends StatelessWidget {
-  ReusableCard({required this.colour,required this.cardChild});
-   final Color colour;
-   final Widget cardChild;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: cardChild,
-      height: 240,
-      margin: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
-      decoration: BoxDecoration(
-        color:colour,
-        borderRadius:BorderRadius.circular(10)
-      ),
-    );
-  }
-}
+
+
