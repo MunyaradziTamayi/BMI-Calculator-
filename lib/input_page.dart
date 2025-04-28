@@ -16,7 +16,7 @@ const cardTextStyle= TextStyle(
 
 
 enum GenderType{
-  male,female
+  male,female,empty
 }
 
 
@@ -28,7 +28,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
 
-  late GenderType selectedGender;
+    GenderType selectedGender=GenderType.empty;
 
   @override
   Widget build(BuildContext context) {
@@ -43,44 +43,38 @@ class _InputPageState extends State<InputPage> {
 
             children: [
               Expanded(
-                child: GestureDetector(
-                  onTap: (){
+                child: ReusableCard(
+                  onPress:(){
                     setState(() {
                       selectedGender=GenderType.male;
                     });
-
                   },
-                  child: ReusableCard(
-                    colour:selectedGender==GenderType.male?activeCardColor:inactiveCardColor,
-                    cardChild: CardContent(
-                      cardText:Text('Male',
-                      style:cardTextStyle),
+                  colour:selectedGender==GenderType.male?activeCardColor:inactiveCardColor,
+                  cardChild: CardContent(
+                    cardText:Text('Male',
+                    style:cardTextStyle),
 
-                      CardIcon: FontAwesomeIcons.mars ,
-                    ),
-
-
+                    CardIcon: FontAwesomeIcons.mars ,
                   ),
+
+
                 ),
                 
 
               ),
               Expanded(
-                child: GestureDetector(
-                  onTap: (){
+                child: ReusableCard(
+                  onPress: (){
                     setState(() {
-                      selectedGender==GenderType.female;
+                      selectedGender=GenderType.female;
                     });
                   },
-
-                  child: ReusableCard(
-                      colour:selectedGender==GenderType.female?activeCardColor:inactiveCardColor,
-                      cardChild: CardContent(
-                        cardText:Text('Female',style: cardTextStyle,),
-                        CardIcon: FontAwesomeIcons.venus ,),
+                    colour:selectedGender==GenderType.female?activeCardColor:inactiveCardColor,
+                    cardChild: CardContent(
+                      cardText:Text('Female',style: cardTextStyle,),
+                      CardIcon: FontAwesomeIcons.venus ,),
 
 
-                  ),
                 ),
               ),
             ],
@@ -89,6 +83,9 @@ class _InputPageState extends State<InputPage> {
           Expanded(
 
             child: ReusableCard(
+              onPress:(){
+
+              },
                 colour: activeCardColor,
               cardChild: CardContent(
                 cardText:Text('????',style: cardTextStyle,),
@@ -99,6 +96,9 @@ class _InputPageState extends State<InputPage> {
             children: [
               Expanded(
                 child: ReusableCard(
+                  onPress:(){
+
+                  },
                     colour: activeCardColor,
                   cardChild: CardContent(
                     cardText:Text('Weight',style: cardTextStyle,),
@@ -108,6 +108,9 @@ class _InputPageState extends State<InputPage> {
               ),
               Expanded(
                 child: ReusableCard(
+                  onPress:(){
+
+                  },
                     colour: activeCardColor,
                   cardChild: CardContent(
                     cardText:Text('Height',
