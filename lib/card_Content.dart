@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CardContent extends StatelessWidget {
-  CardContent({required this.CardIcon,required this.cardText});
+
+  CardContent( {required this.CardIcon, required this.cardText});
 
   final IconData CardIcon;
   final Text cardText;
