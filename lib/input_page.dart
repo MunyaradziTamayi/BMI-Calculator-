@@ -95,7 +95,7 @@ class _InputPageState extends State<InputPage> {
                          crossAxisAlignment: CrossAxisAlignment.baseline,
                          textBaseline: TextBaseline.alphabetic,
                          children: [
-                           Text(height.toString(),style:kHeightTextStyle),
+                           Text(height.toString(),style:kValueTextStyle),
                            Text('cm',style: kCardTextStyle,)
                          ],
                        ),
@@ -138,7 +138,7 @@ class _InputPageState extends State<InputPage> {
                       SizedBox(
                         height: 40,
                       ),
-                      Text(age.toString(),style: kHeightTextStyle,),
+                      Text(age.toString(),style: kValueTextStyle,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -185,7 +185,7 @@ class _InputPageState extends State<InputPage> {
                       SizedBox(
                         height: 40,
                       ),
-                      Text(weight.toString(),style: kHeightTextStyle,),
+                      Text(weight.toString(),style: kValueTextStyle,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

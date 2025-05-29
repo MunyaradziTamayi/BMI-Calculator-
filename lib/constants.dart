@@ -7,7 +7,7 @@ const kCardTextStyle= TextStyle(
   fontSize:19,);
 
 
-const kHeightTextStyle=TextStyle(
+const kValueTextStyle=TextStyle(
     fontSize: 60,
     fontWeight:FontWeight.w900,
 
