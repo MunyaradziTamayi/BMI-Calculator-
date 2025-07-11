@@ -7,6 +7,7 @@ import 'Reusable_card_age_weight.dart';
 import 'card_Content.dart';
 import 'constants.dart';
 import 'height_card.dart';
+import 'staticVariables.dart';
 
 enum GenderType{
   male,female,empty
@@ -20,9 +21,7 @@ class InputPage extends StatefulWidget {
 
 
 class _InputPageState extends State<InputPage> {
-     int height =180;
-     int age=4;
-     int weight=4;
+
     GenderType selectedGender=GenderType.empty;
 
   @override

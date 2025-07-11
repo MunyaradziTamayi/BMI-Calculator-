@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'calculator_brain.dart';
 import 'constants.dart';
+import 'staticVariables.dart';
 
 class Result_page extends StatefulWidget {
   const Result_page({super.key});
@@ -10,6 +11,10 @@ class Result_page extends StatefulWidget {
 }
 
 class _Result_pageState extends State<Result_page> {
+
+  Calculator_brain calc_brains= new Calculator_brain();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,16 +33,18 @@ class _Result_pageState extends State<Result_page> {
             height:60
           ),
              Expanded(
-               flex: 4,
+               flex: 6,
               child: Container(
                 width: double.infinity,
                 color: kActiveCardColor,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text('Normal'),
-                    Text('18.3',style:kValueTextStyle,),
-                    Text('Your BMI result is quite low,you `\n should eat more!')
+                    Text(bmiCategory,style:kCardTextStyle,),
+                    Text(calc_brains.calculateBMI(weight:weight, height:height).toString(),style:kValueTextStyle,),
+                    Text(bmiComment,style:TextStyle(
+                      fontSize: 20
+                    ))
                   ],
                 ),
               ),
@@ -72,3 +79,4 @@ class _Result_pageState extends State<Result_page> {
     );
   }
 }
+
